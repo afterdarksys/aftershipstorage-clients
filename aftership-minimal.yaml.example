@@ -1,0 +1,8 @@
+# Minimal AftershipStorage Configuration
+# Using centralized AfterDark Systems account only
+
+afterdark_account:
+  api_key: your-afterdark-api-key
+
+# All services will use the afterdark_account.api_key
+# No need to specify individual service keys

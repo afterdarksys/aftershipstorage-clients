@@ -36,6 +36,12 @@ ENV/
 .env
 .env.local
 
+# Config files (keep .example files)
+aftership.yaml
+aftership.yml
+*.config.yaml
+*.config.yml
+
 # Testing
 .pytest_cache/
 .coverage

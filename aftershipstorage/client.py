@@ -11,6 +11,7 @@ from .services import (
     HostscienceClient,
     AiserveClient
 )
+from .config import Config
 
 
 class AftershipStorage:
@@ -147,6 +148,55 @@ class AftershipStorage:
             models2go_base_url=os.getenv("MODELS2GO_BASE_URL"),
             hostscience_base_url=os.getenv("HOSTSCIENCE_BASE_URL"),
             aiserve_base_url=os.getenv("AISERVE_BASE_URL"),
+        )
+
+    @classmethod
+    def from_config(cls, config_path: Optional[str] = None):
+        """
+        Create client from a configuration file.
+
+        If config_path is not provided, searches default locations:
+        - ./aftership.yaml
+        - ./aftership.yml
+        - ~/.aftership/config.yaml
+        - ~/.aftership/config.yml
+        - ~/.config/aftership/config.yaml
+        - ~/.config/aftership/config.yml
+
+        Args:
+            config_path: Optional path to config file (YAML format)
+
+        Returns:
+            AftershipStorage instance
+
+        Raises:
+            FileNotFoundError: If config file is specified but not found
+            ValueError: If no config file found in default locations
+        """
+        if config_path:
+            config = Config.from_file(config_path)
+        else:
+            config = Config.from_default_locations()
+            if config is None:
+                raise ValueError(
+                    "No config file found in default locations. "
+                    "Please provide config_path or create a config file."
+                )
+
+        # Resolve API keys and base URLs with fallbacks
+        return cls(
+            darkship_api_key=config.resolve_api_key('darkship'),
+            darkstorage_api_key=config.resolve_api_key('darkstorage'),
+            shipshack_api_key=config.resolve_api_key('shipshack'),
+            models2go_api_key=config.resolve_api_key('models2go'),
+            hostscience_api_key=config.resolve_api_key('hostscience'),
+            aiserve_api_key=config.resolve_api_key('aiserve'),
+            darkship_base_url=config.resolve_base_url('darkship', 'https://api.darkship.io'),
+            darkstorage_base_url=config.resolve_base_url('darkstorage', 'https://api.darkstorage.io'),
+            shipshack_base_url=config.resolve_base_url('shipshack', 'https://api.shipshack.io'),
+            models2go_base_url=config.resolve_base_url('models2go', 'https://api.models2go.com'),
+            hostscience_base_url=config.resolve_base_url('hostscience', 'https://api.hostscience.io'),
+            aiserve_base_url=config.resolve_base_url('aiserve', 'https://api.aiserve.farm'),
         )
 
     @property

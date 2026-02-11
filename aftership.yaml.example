@@ -1,0 +1,41 @@
+# AftershipStorage Configuration File Example
+# Save as: aftership.yaml, aftership.yml, ~/.aftership/config.yaml, or ~/.config/aftership/config.yaml
+
+# Option 1: Use centralized AfterDark Systems account
+# All services will use this API key if service-specific keys are not provided
+afterdark_account:
+  username: your-username
+  password: your-password  # Optional: if password auth is supported
+  api_key: your-afterdark-api-key
+  account_id: your-account-id  # Optional: account identifier
+
+# Option 2: Individual service API keys and endpoints
+# These override the centralized account key
+darkship:
+  api_key: your-darkship-api-key
+  base_url: https://api.darkship.io  # Optional: custom endpoint
+
+darkstorage:
+  api_key: your-darkstorage-api-key
+  base_url: https://api.darkstorage.io  # Optional: custom endpoint
+
+shipshack:
+  api_key: your-shipshack-api-key
+  base_url: https://api.shipshack.io  # Optional: custom endpoint
+
+models2go:
+  api_key: your-models2go-api-key
+  base_url: https://api.models2go.com  # Optional: custom endpoint
+
+hostscience:
+  api_key: your-hostscience-api-key
+  base_url: https://api.hostscience.io  # Optional: custom endpoint
+
+aiserve:
+  api_key: your-aiserve-api-key
+  base_url: https://api.aiserve.farm  # Optional: custom endpoint
+
+# Global settings
+settings:
+  timeout: 30  # Request timeout in seconds
+  verify_ssl: true  # Verify SSL certificates

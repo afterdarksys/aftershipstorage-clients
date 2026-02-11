@@ -54,6 +54,54 @@ from aftershipstorage import AftershipStorage
 client = AftershipStorage.from_env()
 ```
 
+### Using Configuration Files
+
+Create a config file (`aftership.yaml`):
+
+```yaml
+# Option 1: Use centralized AfterDark Systems account
+afterdark_account:
+  username: your-username
+  api_key: your-afterdark-api-key
+
+# Option 2: Individual service configuration
+darkship:
+  api_key: your-darkship-key
+  base_url: https://api.darkship.io  # Optional
+
+darkstorage:
+  api_key: your-darkstorage-key
+
+# Add other services as needed...
+
+settings:
+  timeout: 30
+  verify_ssl: true
+```
+
+Then initialize:
+
+```python
+from aftershipstorage import AftershipStorage
+
+# Load from specific file
+client = AftershipStorage.from_config("path/to/aftership.yaml")
+
+# Or auto-discover from default locations:
+# - ./aftership.yaml
+# - ~/.aftership/config.yaml
+# - ~/.config/aftership/config.yaml
+client = AftershipStorage.from_config()
+```
+
+**Configuration Priority:**
+
+1. Service-specific API key in config file
+2. AfterDark account API key (applies to all services)
+3. Environment variables
+
+This allows you to use a single AfterDark Systems account API key for all services, or override specific services with their own keys.
+
 ### Access Individual Services
 
 ```python

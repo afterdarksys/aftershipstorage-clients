@@ -1,0 +1,25 @@
+# Custom Configuration Example
+# Mix of centralized account and service-specific overrides
+
+# Use centralized account as default
+afterdark_account:
+  username: admin@company.com
+  api_key: afterdark-master-key-abc123
+  account_id: company-prod-001
+
+# Override specific services with custom endpoints or keys
+darkstorage:
+  # Uses afterdark_account.api_key, but custom endpoint
+  base_url: https://storage.custom-domain.com
+
+models2go:
+  # Custom API key for this service only
+  api_key: models2go-specific-key-xyz789
+  base_url: https://models.custom-domain.com
+
+# Other services (darkship, shipshack, hostscience, aiserve)
+# will use afterdark_account.api_key and default endpoints
+
+settings:
+  timeout: 60  # Longer timeout for large operations
+  verify_ssl: true
