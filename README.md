@@ -15,7 +15,32 @@ A unified Python client for interacting with multiple services in the aftership 
 pip install -e .
 ```
 
+This installs both the Python library and the `aftership` CLI command.
+
 ## Usage
+
+The AftershipStorage client can be used in two ways:
+
+1. **Python Library** - Import and use programmatically
+2. **CLI Tool** - Use the `aftership` command from your terminal
+
+### CLI Quick Start
+
+```bash
+# Initialize config
+aftership config init
+
+# Edit aftership.yaml with your API keys
+
+# Use the CLI
+aftership darkship get /v1/shipments
+aftership darkstorage get /v1/buckets
+aftership aiserve get /v1/compute/jobs
+```
+
+See [CLI.md](CLI.md) for complete CLI documentation.
+
+## Python Library Usage
 
 ### Basic Setup
 
