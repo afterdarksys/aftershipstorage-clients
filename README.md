@@ -1,6 +1,6 @@
 # AftershipStorage Meta Client
 
-A unified Python client for interacting with multiple services in the aftership storage pipeline:
+A unified Python client and CLI for interacting with multiple services in the aftership storage pipeline:
 
 - **darkship.io** - Shipping operations
 - **darkstorage.io** - Storage management (S3-compatible)
@@ -9,13 +9,31 @@ A unified Python client for interacting with multiple services in the aftership 
 - **hostscience.io** - Hosting infrastructure
 - **aiserve.farm** - AI compute management
 
-## Installation
+## Features
+
+- **Unified Interface** - One client for all 6 services
+- **Multiple Auth Methods** - Config file, environment variables, or direct instantiation
+- **CLI Tool** - `aftership` command for terminal usage
+- **Centralized Account** - Use single AfterDark Systems API key for all services
+- **Service-Specific Overrides** - Custom keys or endpoints per service
+- **Rich Output** - JSON, YAML, or formatted tables in CLI
+- **Type-Safe** - Full Python type hints
+
+## Documentation
+
+- **[INSTALL.md](INSTALL.md)** - Complete installation guide
+- **[CLI.md](CLI.md)** - CLI documentation and examples
+- **[examples/](examples/)** - Python code examples
+
+## Quick Install
 
 ```bash
 pip install -e .
 ```
 
 This installs both the Python library and the `aftership` CLI command.
+
+For detailed installation instructions, see [INSTALL.md](INSTALL.md).
 
 ## Usage
 
@@ -149,6 +167,20 @@ response = client.hostscience.get("/endpoint")
 response = client.aiserve.get("/endpoint")
 ```
 
+## Examples
+
+Check the [examples/](examples/) directory for:
+
+- **basic_usage.py** - Simple usage examples
+- **config_file.py** - Configuration file examples
+- **file_storage.py** - S3-compatible storage operations
+- **model_management.py** - Model publishing workflow
+- **product_shipping.py** - Shipping and fleet management
+- **hosting_resources.py** - Infrastructure management
+- **ai_compute.py** - AI training and inference
+- **full_pipeline.py** - Complete end-to-end pipeline
+- **cli_usage.sh** - CLI command examples
+
 ## Development
 
 Install development dependencies:
@@ -162,3 +194,16 @@ Run tests:
 ```bash
 pytest
 ```
+
+## Repository
+
+- **GitHub**: https://github.com/afterdarksys/aftershipstorage-clients
+- **Issues**: https://github.com/afterdarksys/aftershipstorage-clients/issues
+
+## License
+
+See LICENSE file for details.
+
+## Contributing
+
+Contributions are welcome! Please open an issue or submit a pull request.
